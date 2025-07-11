@@ -17,8 +17,9 @@ int main(){
 		gameFps = gameFps + runningFps;
 		// printf("current-frames:%d\n",gameFps); #todo - fix fps counter in stdout
 		BeginDrawing();
-			ClearBackground(RAYWHITE);
-			DrawText("Ping pong game",50,50,20,LIGHTGRAY);
+			ClearBackground(BLACK);
+			DrawRectangle(40, 40 ,  100 , 200 , WHITE);
+			DrawCircle(400,100,40,DARKBLUE);
 		EndDrawing();
 	}
     return 0;
