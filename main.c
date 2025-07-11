@@ -21,5 +21,5 @@ int main(){
 			DrawText("Ping pong game",50,50,20,LIGHTGRAY);
 		EndDrawing();
 	}
-
+    return 0;
 }
