@@ -14,6 +14,8 @@
  struct PlayerInstance {
   float positionX;
   float positionY;
+
+  float speed ;
   int   score ; 
 };
 
@@ -22,25 +24,27 @@ typedef struct PlayerInstance Player;
 
 int main(){
   Player firstPlayer;
-	const int screenWidth = 800;
-	const int screenHeight = 450;
-	const int runningFps = GetFPS();
-  
+	float screenWidth = 800;
+	float screenHeight = 450;
+	int runningFps = GetFPS();  
+
   firstPlayer.positionX;
   firstPlayer.positionY;
-  
-  Vector2 firstPlayerPosition = { (float)screenWidth/2, (float)screenHeight/2 }; 
-  Vector2 playerSize = { 20,100 };
-	InitWindow(screenWidth,screenHeight,"ping pong game");
+  firstPlayer.speed = 5.0f;
+
+  Vector2 playerSize = { ( 5 * screenWidth ) / 100.0 ,( 30.0 * screenHeight)/ 100.0 };  
+  Vector2 firstPlayerPosition = { 10.0 , (float)screenHeight/2.0 }; 
+
+  InitWindow(screenWidth,screenHeight,"ping pong game");
+
 	SetTargetFPS(60);
 
 	while (!WindowShouldClose())
-	{
-    if (IsKeyDown(KEY_RIGHT)) firstPlayerPosition.x += 2.0f; 
-    if (IsKeyDown(KEY_LEFT)) firstPlayerPosition.x -= 2.0f;
+	{ 
+    // firstPlayerPosition.y = firstPlayer.positionY;
 
-    if (IsKeyDown(KEY_UP)) firstPlayerPosition.y -= 2.0f;
-    if (IsKeyDown(KEY_DOWN)) firstPlayerPosition.y += 2.0f;
+    if (IsKeyDown(KEY_UP)) firstPlayerPosition.y -= firstPlayer.speed ;
+    if (IsKeyDown(KEY_DOWN)) firstPlayerPosition.y += firstPlayer.speed ;
     
 		BeginDrawing();
 			ClearBackground(BLACK);
