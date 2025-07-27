@@ -11,7 +11,7 @@
    * 4. Define collisions
    */
 
- struct PlayerInstance {
+struct PlayerInstance {
   int width; 
   int height;
 
@@ -22,8 +22,6 @@
 
 struct BallInstance {
   int   radius; 
-  float positionX;
-  float positionY;
 
   float speed;
 };
@@ -67,6 +65,7 @@ int main(){
     
 		BeginDrawing();
 			ClearBackground(BLACK);
+      DrawFPS(0,0);
 			DrawRectangleV(firstPlayerPosition, playerSize , WHITE);
       DrawCircleV(ballEntityPosition,ball.radius,RED);
 		EndDrawing();
