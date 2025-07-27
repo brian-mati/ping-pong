@@ -15,8 +15,6 @@
   int width; 
   int height;
 
-  float positionX;
-  float positionY;
 
   float speed ;
   int   score ; 
@@ -43,36 +41,34 @@ int main(){
   
   firstPlayer.width = ( 2.5 * screenWidth ) / 100;
   firstPlayer.height = (30 * screenHeight ) / 100;
-
-  firstPlayer.positionX;
-  firstPlayer.positionY;
   firstPlayer.speed = 5.0f;
+
+  Vector2 playerSize = { firstPlayer.width ,firstPlayer.height };
+  Vector2 firstPlayerPosition = { 10.0 , (float)screenHeight/2.0 };
    /* ball data */
   BallInstance ball;
+
   ball.radius =  ( 2.5 * screenWidth ) / 100 ;
   ball.speed = 5.0f;
+
+  Vector2 ballEntityPosition = {(float)screenWidth/2,(float)screenHeight/2};
    /* */
-  Vector2 playerSize = { firstPlayer.width ,firstPlayer.height };  
    
 
 
-  Vector2 firstPlayerPosition = { 10.0 , (float)screenHeight/2.0 };
-  Vector2 ballEntityPosition = {(float)screenWidth/2,(float)screenHeight/2};
   InitWindow(screenWidth,screenHeight,"ping pong game");
 
 	SetTargetFPS(60);
 
 	while (!WindowShouldClose())
 	{ 
-     // firstPlayerPosition.y = firstPlayer.positionY;
-
     if (IsKeyDown(KEY_UP)) firstPlayerPosition.y -= firstPlayer.speed ;
     if (IsKeyDown(KEY_DOWN)) firstPlayerPosition.y += firstPlayer.speed ;
     
 		BeginDrawing();
 			ClearBackground(BLACK);
 			DrawRectangleV(firstPlayerPosition, playerSize , WHITE);
-      DrawCircleV(ballEntityPosition,ball.radius,WHITE);
+      DrawCircleV(ballEntityPosition,ball.radius,RED);
 		EndDrawing();
 	}
     return 0;
