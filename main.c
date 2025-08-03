@@ -11,6 +11,10 @@
    * 4. Define collisions
    */
 
+struct borderInstance {
+  float width;
+  float height;
+};
 struct PlayerInstance {
   int width; 
   int height;
@@ -26,6 +30,7 @@ struct BallInstance {
   float speed;
 };
 
+typedef struct  borderInstance Border;
 typedef struct PlayerInstance Player;
 typedef struct BallInstance BallInstance;
 
@@ -33,7 +38,14 @@ int main(){
   float screenWidth = 800;
 	float screenHeight = 450;
 	int runningFps = GetFPS();  
+  bool collisions = false;
+   /* borders data */
+  Border topBorder;
+  Border bottomBorder;
+  Border leftBorder;
+  Border rightBorder;
 
+  topBorder.width = screenWidth;
    /* player data  */
   Player firstPlayer;
   
@@ -62,10 +74,17 @@ int main(){
 	{ 
     if (IsKeyDown(KEY_UP)) firstPlayerPosition.y -= firstPlayer.speed ;
     if (IsKeyDown(KEY_DOWN)) firstPlayerPosition.y += firstPlayer.speed ;
-    
+
+    // if ((firstPlayerPosition.y + firstPlayer.height ) >= GetScreenWidth() || (firstPlayerPosition.y <=0 )) firstPlayerPosition.y = -1 ;
+    if ( firstPlayerPosition.y <= 0 ) firstPlayerPosition.y = -1;
+    else if ((firstPlayerPosition.y + firstPlayer.height ) >= GetScreenHeight()) firstPlayerPosition.y = 0 ;
 		BeginDrawing();
+      /* logging / debugging */ 
+        printf("%f",firstPlayerPosition.y);
+       /* <--------/> */
 			ClearBackground(BLACK);
       DrawFPS(0,0);
+
 			DrawRectangleV(firstPlayerPosition, playerSize , WHITE);
       DrawCircleV(ballEntityPosition,ball.radius,RED);
 		EndDrawing();
