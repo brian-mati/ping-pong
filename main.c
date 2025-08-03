@@ -77,7 +77,9 @@ int main(){
 
     // if ((firstPlayerPosition.y + firstPlayer.height ) >= GetScreenWidth() || (firstPlayerPosition.y <=0 )) firstPlayerPosition.y = -1 ;
     if ( firstPlayerPosition.y <= 0 ) firstPlayerPosition.y = -1;
-    else if ((firstPlayerPosition.y + firstPlayer.height ) >= GetScreenHeight()) firstPlayerPosition.y = 0 ;
+    else if ((firstPlayerPosition.y + firstPlayer.height ) >= GetScreenHeight()) firstPlayerPosition.y = GetScreenHeight() - firstPlayer.height ;
+
+
 		BeginDrawing();
       /* logging / debugging */ 
         printf("%f",firstPlayerPosition.y);
